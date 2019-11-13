@@ -4,6 +4,7 @@
   "description": "Creating Web-Based Wireshark GUI",
   "main": "index.js",
   "dependencies": {
+    "child_process": "^1.0.2",
     "pug": "^2.0.4"
   },
   "devDependencies": {},
