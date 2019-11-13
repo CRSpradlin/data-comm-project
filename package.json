@@ -1,0 +1,23 @@
+{
+  "name": "data-comm-project",
+  "version": "1.0.0",
+  "description": "Creating Web-Based Wireshark GUI",
+  "main": "index.js",
+  "dependencies": {
+    "pug": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CRSpradlin/data-comm-project.git"
+  },
+  "author": "crspradlin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CRSpradlin/data-comm-project/issues"
+  },
+  "homepage": "https://github.com/CRSpradlin/data-comm-project#readme"
+}
