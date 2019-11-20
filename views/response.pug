@@ -1,7 +1,8 @@
 html
     head
+        link(rel="stylesheet" href="/static/css/response.css")
     body
-        script(src="/static/Chart.bundle.min.js")
+        script(src="/chartjs/Chart.bundle.min.js")
         script.
                 let ctx = document.createElement("canvas");
                 let typeArray = '#{typeArray}'.split(',');

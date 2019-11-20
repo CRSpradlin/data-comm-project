@@ -13,7 +13,8 @@ app.set('view engine', 'pug');
 app.set('views', './views');
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('/static', express.static('node_modules/chart.js/dist'));
+app.use('/chartjs', express.static('node_modules/chart.js/dist'));
+app.use('/static', express.static('static'));
 app.route('/')
     .get((req, res) => {
         res.render("./index.pug")
