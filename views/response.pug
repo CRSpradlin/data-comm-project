@@ -3,43 +3,30 @@ html
         link(rel="stylesheet" href="/static/css/response.css")
     body
         script(src="/chartjs/Chart.bundle.min.js")
-        script.
-                let ctx = document.createElement("canvas");
-                let typeArray = '#{typeArray}'.split(',');
-                let pie = new Chart(ctx,  {
-                type: 'pie',
-                data: {
-                    labels: typeArray,
-                    datasets: [{
-                        label: '# of Votes',
-                        data: [#{countArray}],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
-            document.body.append(ctx);
+        script
+              |  let ctx = document.createElement("canvas");
+              |  let typeArray = '#{typeArray}'.split(',');
+              |  let pie = new Chart(ctx,  {
+              |  type: 'pie',
+              |  data: {
+              |      labels: typeArray,
+              |      datasets: [{
+              |          label: '# of Votes',
+              |          data: [#{countArray}],
+              |          backgroundColor: [
+              for val in countArray
+                - var n1 = Math.round(255*Math.random());
+                - var n2 = Math.round(255*Math.random());
+                - var n3 = Math.round(255*Math.random());
+                | 'rgba(#{n1}, #{n2}, #{n3})',
+              |          ],
+              |          borderWidth: 1
+              |      }]
+              |  },
+              |  options: {
+              |      legend: {
+              |          position: 'right',
+              |      }
+              |  }
+              | });
+              | document.body.append(ctx);

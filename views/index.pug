@@ -1,6 +1,10 @@
 html
     head
+        link(rel="stylesheet" href="/static/css/index.css")
     body
         form(action="/" method="POST")
-            <input name="file" type="file" required/>
-            <input type="submit" />
+            <div class="upload-file">
+                <button class="file-btn">Upload File</button>
+                <input name="file" type="file" required/>
+            </div>
+            <input type="submit" class="submit-btn"/>
