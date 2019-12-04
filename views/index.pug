@@ -1,10 +1,41 @@
 html
     head
         link(rel="stylesheet" href="/static/css/index.css")
+        script(src="/static/js/jquery.min.js")
     body
-        form(action="/" method="POST")
+        form(id="form" action="/" method="POST")
             <div class="upload-file">
                 <button class="file-btn">Upload File</button>
-                <input name="file" type="file" required/>
+                <input id="file" name="file" type="file" required/>
             </div>
+            <input id="gottenString" name="gottenString" type="text" style="display:none;"/>
             <input type="submit" class="submit-btn"/>
+        script.
+            function triggerCallback(e) {
+                var files;
+                if(e.dataTransfer) {
+                files = e.dataTransfer.files;
+                } else if(e.target) {
+                files = e.target.files;
+                }
+                callback.call(null, files);
+            }
+            document.getElementById("file").addEventListener('change', triggerCallback);
+            function callback(files){
+                loadFileAsText(files);
+            }
+            function loadFileAsText(files){
+                var fileToLoad = files[0];
+
+                var fileReader = new FileReader();
+                fileReader.onload = function(fileLoadedEvent){
+                    gottenString = fileLoadedEvent.target.result;
+                    try{
+                        console.log("gottenString " + String(gottenString));
+                        document.getElementById('gottenString').value = gottenString;
+                    } catch(error) {
+                        console.log("There was an error")
+                    }                                                           
+                };
+                fileReader.readAsText(fileToLoad, "UTF-8");
+            }
